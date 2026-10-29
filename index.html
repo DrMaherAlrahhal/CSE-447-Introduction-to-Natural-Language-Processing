@@ -1,110 +1,110 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CSE 447 - Introduction to Natural Language Processing</title>
+  <title>CSE447 – Introduction to Natural Language Processing</title>
   <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f3f6fb;
-      color: #172b4d;
-    }
-    header {
-      background: #293b72;
-      color: white;
-      padding: 48px 20px;
-      text-align: center;
-    }
-    header h1 { margin: 0 0 12px; }
-    main {
-      max-width: 1100px;
-      margin: 35px auto;
-      padding: 0 20px;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 18px;
-    }
-    .card {
-      background: white;
-      padding: 24px;
-      border-radius: 12px;
-      box-shadow: 0 3px 12px #00000012;
-    }
-    .card h2 { margin-top: 0; }
-    .button {
-      display: inline-block;
-      background: #2563a6;
-      color: white;
-      padding: 11px 16px;
-      border-radius: 7px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .soon { color: #777; }
-    footer {
-      text-align: center;
-      padding: 30px;
-      color: #667;
-    }
+    :root { --navy:#293b72; --blue:#2563a6; --ink:#172b4d; --muted:#66758b; --bg:#f3f6fb; --line:#dce5f3; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:Arial,sans-serif; background:var(--bg); color:var(--ink); }
+    header { background:linear-gradient(125deg,#20335f,#344f92); color:white; padding:46px 20px; text-align:center; }
+    header h1 { margin:0 0 8px; font-size:44px; }
+    header h2 { margin:0 0 12px; font-size:clamp(22px,3vw,32px); }
+    header p { margin:8px 0; }
+    main { max-width:1120px; margin:36px auto; padding:0 20px; }
+    section { margin-bottom:38px; }
+    .heading { margin:0 0 9px; font-size:27px; }
+    .description { margin:0 0 20px; color:var(--muted); line-height:1.55; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:18px; }
+    .card { display:flex; flex-direction:column; background:white; padding:24px; border-radius:14px; border:1px solid var(--line); box-shadow:0 3px 12px #0000000d; min-height:197px; }
+    .card h3 { font-size:21px; margin:7px 0 12px; }
+    .card .detail { color:var(--muted); margin:0 0 18px; line-height:1.5; }
+    .card .action { margin-top:auto; }
+    .button { display:inline-block; background:var(--blue); color:white; padding:11px 16px; border-radius:8px; text-decoration:none; font-weight:700; }
+    .button:hover,.button:focus-visible { background:#174c85; }
+    .soon { display:inline-block; border-radius:8px; padding:10px 14px; color:#56647c; background:#e9edf4; font-weight:700; }
+    .mark { display:inline-block; align-self:flex-start; font-size:13px; font-weight:700; color:#205c97; background:#eaf3ff; border:1px solid #c8defa; border-radius:100px; padding:6px 11px; }
+    .assessment { border-top:4px solid #f3ad4b; }
+    .assessment .mark { color:#80500e; background:#fff3df; border-color:#f3ddb1; }
+    footer { text-align:center; padding:30px 15px 38px; color:var(--muted); border-top:1px solid var(--line); }
+    @media(max-width:530px){ header{padding:35px 15px}header h1{font-size:36px}main{padding:0 14px}.card{min-height:172px} }
   </style>
 </head>
 <body>
   <header>
-    <h1>CSE 447</h1>
+    <h1>CSE447</h1>
     <h2>Introduction to Natural Language Processing</h2>
-    <p>Interactive Learning Labs</p>
+    <p>Interactive Learning Labs &amp; Assessment Materials</p>
     <p>Dr. Maher Alrahhal</p>
   </header>
-
   <main>
-    <h2>Learning Modules</h2>
-    <div class="grid" id="modules"></div>
+    <section aria-labelledby="learning-title">
+      <h2 class="heading" id="learning-title">Learning Modules</h2>
+      <p class="description">Explore the five learning modules and their interactive lessons.</p>
+      <div class="grid" id="modules"></div>
+    </section>
+    <section aria-labelledby="assessment-title">
+      <h2 class="heading" id="assessment-title">Assessments &amp; Revision Materials</h2>
+      <p class="description">Access revision resources and the home assignment.</p>
+      <div class="grid" id="assessments"></div>
+    </section>
   </main>
-
-  <footer>
-    CSE 447 | Introduction to Natural Language Processing
-  </footer>
-
+  <footer>CSE447 | Introduction to Natural Language Processing</footer>
   <script>
     const modules = [
-      { title: "Module 1", url: "./Module-1/index.html" },
-      { title: "Module 2", url: "./Module-2/index.html" },
-      { title: "Module 3", url: "./Module-3/index.html" },
-      { title: "Module 4", url: "./Module-4/index.html" },
-      { title: "Module 5", url: "./Module-5/index.html" },
+      { title:'Module 1', detail:'Sound', url:'./Module-1/index.html' },
+      { title:'Module 2', detail:'Words and Word Forms', url:'./Module-2/index.html' },
+      { title:'Module 3', detail:'Structures', url:'./Module-3/index.html' },
+      { title:'Module 4', detail:'Meaning', url:'./Module-4/index.html' },
+      { title:'Module 5', detail:'Web 2.0 Applications', url:'./Module-5/index.html' }
     ];
 
-    const container = document.getElementById("modules");
+    const assessments = [
+      { title:'Revision for Midterm', marks:15, detail:'Class Test revision material', url:'./Revision-for-Midterm/index.html' },
+      { title:'Home Assignment', marks:10, detail:'Home assignment instructions and questions', url:'./Home-Assignment/index.html' },
+      { title:'Revision for Quiz', marks:10, detail:'Quiz preparation and practice material', url:'./Revision-for-Quiz/index.html' },
+      { title:'Revision for Final Exam', marks:60, detail:'End-term examination revision material', url:'./Revision-for-Final-Exam/index.html' }
+    ];
 
-    modules.forEach(module => {
-      const card = document.createElement("div");
-      card.className = "card";
-
-      const title = document.createElement("h2");
-      title.textContent = module.title;
-      card.appendChild(title);
-
-      if (module.url) {
-        const link = document.createElement("a");
-        link.className = "button";
-        link.href = module.url;
-        link.textContent = "Open Learning Lab";
-        card.appendChild(link);
-      } else {
-        const message = document.createElement("p");
-        message.className = "soon";
-        message.textContent = "Coming Soon";
-        card.appendChild(message);
+    function addCards(items, elementId, isAssessment=false) {
+      const container=document.getElementById(elementId);
+      for(const item of items){
+        const card=document.createElement('article');
+        card.className='card'+(isAssessment?' assessment':'');
+        if(isAssessment){
+          const mark=document.createElement('span');
+          mark.className='mark';
+          mark.textContent=item.marks+' Marks';
+          card.appendChild(mark);
+        }
+        const title=document.createElement('h3');
+        title.textContent=item.title;
+        card.appendChild(title);
+        const desc=document.createElement('p');
+        desc.className='detail';
+        desc.textContent=item.detail;
+        card.appendChild(desc);
+        const action=document.createElement('div');
+        action.className='action';
+        if(item.url){
+          const link=document.createElement('a');
+          link.className='button';
+          link.href=item.url;
+          link.textContent=isAssessment?'Open Material':'Open Learning Lab';
+          action.appendChild(link);
+        } else {
+          const soon=document.createElement('span');
+          soon.className='soon';
+          soon.textContent='Coming Soon';
+          action.appendChild(soon);
+        }
+        card.appendChild(action);
+        container.appendChild(card);
       }
-
-      container.appendChild(card);
-    });
+    }
+    addCards(modules,'modules');
+    addCards(assessments,'assessments',true);
   </script>
 </body>
 </html>
