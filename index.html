@@ -27,6 +27,10 @@
     .mark { display:inline-block; align-self:flex-start; font-size:13px; font-weight:700; color:#205c97; background:#eaf3ff; border:1px solid #c8defa; border-radius:100px; padding:6px 11px; }
     .assessment { border-top:4px solid #f3ad4b; }
     .assessment .mark { color:#80500e; background:#fff3df; border-color:#f3ddb1; }
+    /* Assignment deadline: highlighted without changing the other cards. */
+    .deadline { display:flex; align-items:center; gap:8px; flex-wrap:wrap; align-self:flex-start; margin:0 0 20px; padding:10px 12px; border-radius:9px; border:1px solid #f2c2a6; background:#fff1e7; color:#a43f20; font-size:14px; font-weight:700; line-height:1.4; }
+    .deadline strong { color:#812b16; }
+    .deadline svg { flex-shrink:0; }
     footer { text-align:center; padding:30px 15px 38px; color:var(--muted); border-top:1px solid var(--line); }
     @media(max-width:530px){ header{padding:35px 15px}header h1{font-size:36px}main{padding:0 14px}.card{min-height:172px} }
   </style>
@@ -62,7 +66,7 @@
 
     const assessments = [
       { title:'Revision for Midterm', marks:15, detail:'Class Test revision material', url:'./Revision-for-Midterm/index.html' },
-      { title:'Home Assignment', marks:10, detail:'Home assignment instructions and questions', url:'./Home-Assignment/index.html' },
+      { title:'Home Assignment', marks:10, detail:'Home assignment instructions and questions', deadline:'27/11/2026', url:'./Home-Assignment/index.html' },
       { title:'Revision for Quiz', marks:10, detail:'Quiz preparation and practice material', url:'./Revision-for-Quiz/index.html' },
       { title:'Revision for Final Exam', marks:60, detail:'End-term examination revision material', url:'./Revision-for-Final-Exam/index.html' }
     ];
@@ -85,6 +89,17 @@
         desc.className='detail';
         desc.textContent=item.detail;
         card.appendChild(desc);
+        if(item.deadline){
+          const deadline=document.createElement('div');
+          deadline.className='deadline';
+          const calendar=document.createElement('span');
+          calendar.setAttribute('aria-hidden','true');
+          calendar.textContent='📅';
+          const label=document.createElement('span');
+          label.textContent='Deadline: '+item.deadline;
+          deadline.append(calendar,label);
+          card.appendChild(deadline);
+        }
         const action=document.createElement('div');
         action.className='action';
         if(item.url){
